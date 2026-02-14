@@ -8,8 +8,8 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      # Database persistence
-      - ./monitor.db:/app/monitor.db
+      # Map a directory instead of a single file for better permission handling
+      - ./data:/app/data
     environment:
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1

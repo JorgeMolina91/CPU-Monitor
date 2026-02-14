@@ -1,3 +1,4 @@
+import os 
 import psutil
 import sqlite3
 from flask import Flask, render_template
@@ -5,9 +6,16 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # --- DATABASE LOGIC ---
+
+DB_PATH = os.path.join(BASE_DIR, 'data', 'monitor.db')
+
 def get_db_connection():
-    conn = sqlite3.connect('monitor.db')
+    # Ensure the directory exists before connecting
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+    conn = sqlite3.connect(DB_PATH)
     return conn
 
 def init_db():
