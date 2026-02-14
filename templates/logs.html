@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Logs History</title>
+</head>
+<body class="bg-blue-50 font-sans min-h-screen flex flex-col items-center justify-center text-slate-700">
+
+    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl shadow-blue-200/50 max-w-md w-full border border-white">
+        <h1 class="text-xl font-light mb-6 text-center tracking-tight">Last Logs</h1>
+        
+        <div class="space-y-3">
+            {% for log in logs %}
+            <div class="flex justify-between items-center p-3 bg-white/50 rounded-xl border border-blue-50">
+                <span class="text-[10px] font-mono text-slate-400">{{ log[0] }}</span>
+                <div class="text-right">
+                    <span class="text-sm font-bold text-blue-600">{{ log[1] }}% CPU</span>
+                    <span class="text-[10px] block text-slate-400">{{ log[2] }}% RAM</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="/" class="text-slate-400 hover:text-blue-500 text-sm transition-colors">← Back to monitor</a>
+        </div>
+    </div>
+
+</body>
+</html>

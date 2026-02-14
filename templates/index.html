@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Monitor Live</title>
+</head>
+<body class="bg-blue-50 font-sans min-h-screen flex flex-col items-center justify-center text-slate-700">
+
+    <div class="bg-white/80 backdrop-blur-sm p-10 rounded-3xl shadow-xl shadow-blue-200/50 text-center max-w-sm w-full border border-white">
+        <h1 class="text-2xl font-light mb-6 tracking-tight">System Status</h1>
+        
+        <div class="mb-8">
+            <span class="text-5xl font-bold text-blue-600">{{ stats.cpu }}%</span>
+            <p class="text-sm uppercase tracking-widest text-slate-400 mt-2">CPU Usage</p>
+        </div>
+
+        <div class="space-y-4">
+            <p class="text-sm">RAM: <span class="font-semibold">{{ stats.ram }}%</span></p>
+            <p class="text-sm italic">Status: 
+                <span class="{% if stats.status == 'Critical' %}text-red-500{% else %}text-green-500{% endif %} font-bold">
+                    {{ stats.status }}
+                </span>
+            </p>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-blue-100">
+            <a href="/logs" class="text-blue-500 hover:text-blue-700 text-sm font-medium transition-colors">View history →</a>
+        </div>
+    </div>
+
+</body>
+</html>
