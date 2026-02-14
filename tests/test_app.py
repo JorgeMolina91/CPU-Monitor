@@ -1,5 +1,6 @@
 import pytest
-from app import app
+import os
+from app import app, BASE_DIR, DB_PATH
 
 @pytest.fixture
 def client():
@@ -21,5 +22,4 @@ def test_logs_route(client):
 
 def test_database_creation():
     """Test that the database file exists after starting the app"""
-    import os
-    assert os.path.exists('monitor.db')
+    assert os.path.exists(DB_PATH)
